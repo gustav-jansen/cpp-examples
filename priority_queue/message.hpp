@@ -19,5 +19,11 @@ class Message {
 
     bool operator<(const Message& );
 };
-bool operator<(const Message&, const Message&);
+bool operator<(const Message& m1, const Message& m2);
+
+struct CmpMsgTimestamp {
+  bool operator()(const Message* m1, const Message* m2) {
+    return m1->timestamp > m2->timestamp;
+  }
+};
 #endif
