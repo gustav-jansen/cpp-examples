@@ -1,5 +1,5 @@
 CPP=g++
-CFLAGS:=-O3 -Wall -Wextra -std=c++17
+CFLAGS:=-O3 -Wall -Wextra -std=c++17 -pthread
 ifdef DEBUG
 	CFLAGS+=-DDEBUG -Og -g -rdynamic
 endif
