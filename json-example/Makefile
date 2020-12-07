@@ -8,10 +8,10 @@ INCLUDE = -I${RAPIDJSON_DIR}/include
 
 CFLAGS += ${INCLUDE}
 
-objects = message.o
+objects = message.o main.o
 
-all: ${objects} main.o
-	${CPP} ${CFLAGS} -o json_example.x main.o ${objects}
+all: ${objects}
+	${CPP} ${CFLAGS} -o json_example.x ${objects}
 
 %.o: %.cpp
 	${CPP} ${CFLAGS} -c $< -o $@
@@ -19,3 +19,7 @@ all: ${objects} main.o
 .PHONY.: clean
 clean:
 	rm -f *.o *.x
+
+message.o : DecompConfig.hpp FBBufferConfig.hpp
+
+main.o : message.hpp DecompConfig.hpp FBBufferConfig.hpp

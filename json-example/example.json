@@ -55,7 +55,6 @@
 	],
 	"Decomps":[
 		{
-
 			"APIPort":8003,
 			"HostIP":"10.22.22.20",
 			"Name":"decomp_1",
