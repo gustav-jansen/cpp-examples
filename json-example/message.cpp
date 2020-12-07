@@ -2,6 +2,8 @@
 
 #include "DecompConfig.hpp"
 #include "FWBufferConfig.hpp"
+#include "ConductorConfig.hpp"
+#include "EventBuilderConfig.hpp"
 
 DecompConfig get_decomp_config(rapidjson::Value &d) {
   DecompConfig config;
@@ -81,4 +83,52 @@ std::vector<FWBufferConfig> get_fwb_configs(rapidjson::Value &d) {
   }
 
   return configs;
+}
+
+ConductorConfig get_conductor_config(rapidjson::Value &d) {
+  ConductorConfig config;
+
+  assert(d.HasMember("Host"));
+  assert(d["Host"].IsString());
+  config.host = d["Host"].GetString();
+
+  assert(d.HasMember("Port"));
+  assert(d["Port"].IsInt());
+  config.port = d["Port"].GetInt();
+
+  return config;
+}
+
+EventBuilderConfig get_eb_config(rapidjson::Value &d) {
+  EventBuilderConfig config;
+
+  assert(d.HasMember("APIPort"));
+  assert(d["APIPort"].IsInt());
+  config.apiport = d["APIPort"].GetInt();
+
+  assert(d.HasMember("HostIP"));
+  assert(d["HostIP"].IsString());
+  config.hostip = d["HostIP"].GetString();
+
+  assert(d.HasMember("Name"));
+  assert(d["Name"].IsString());
+  config.name = d["Name"].GetString();
+
+  assert(d.HasMember("DataIP"));
+  assert(d["DataIP"].IsString());
+  config.dataip = d["DataIP"].GetString();
+
+  assert(d.HasMember("DataPort"));
+  assert(d["DataPort"].IsInt());
+  config.dataport = d["DataPort"].GetInt();
+
+  assert(d.HasMember("HeaderTimeout"));
+  assert(d["HeaderTimeout"].IsInt());
+  config.headertimeout = d["HeaderTimeout"].GetInt();
+
+  assert(d.HasMember("DataTimeout"));
+  assert(d["DataTimeout"].IsInt());
+  config.datatimeout = d["DataTimeout"].GetInt();
+
+  return config;
 }

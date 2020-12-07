@@ -9,6 +9,8 @@
 #include "message.hpp"
 #include "DecompConfig.hpp"
 #include "FWBufferConfig.hpp"
+#include "ConductorConfig.hpp"
+#include "EventBuilderConfig.hpp"
 
 std::string read_file(std::string filename) {
   std::ifstream fh(filename);
@@ -35,6 +37,12 @@ int main() {
   assert(d.HasMember("FWBuffers"));
   std::vector<FWBufferConfig> fwb_configs = get_fwb_configs(d["FWBuffers"]);
 
+  assert(d.HasMember("Conductor"));
+  ConductorConfig conductor_config = get_conductor_config(d["Conductor"]);
+
+  assert(d.HasMember("EventBuilder"));
+  EventBuilderConfig eb_config = get_eb_config(d["EventBuilder"]);
+
   for ( auto &config : decomp_configs) {
     std::cout << "APIPort: " << config.apiport << std::endl;
     std::cout << "HostIP: " << config.hostip << std::endl;
@@ -52,4 +60,14 @@ int main() {
     std::cout << "BaseDataPort: " << config.basedataport << std::endl;
     std::cout << "BaseQueryPort: " << config.basequeryport << std::endl << std::endl;
   }
+  std::cout << "Host: " << conductor_config.host << std::endl;
+  std::cout << "Port: " << conductor_config.port << std::endl << std::endl;
+
+    std::cout << "APIPort: " << eb_config.apiport << std::endl;
+    std::cout << "HostIP: " << eb_config.hostip << std::endl;
+    std::cout << "Name: " << eb_config.name << std::endl;
+    std::cout << "DataIP: " << eb_config.dataip << std::endl;
+    std::cout << "DataPort: " << eb_config.dataport << std::endl;
+    std::cout << "HeaderTimeout: " << eb_config.headertimeout << std::endl;
+    std::cout << "DataTimeout: " << eb_config.datatimeout << std::endl << std::endl;
 }

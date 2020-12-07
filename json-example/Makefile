@@ -20,6 +20,6 @@ all: ${objects}
 clean:
 	rm -f *.o *.x
 
-message.o : DecompConfig.hpp FBBufferConfig.hpp
+message.o : DecompConfig.hpp FWBufferConfig.hpp ConductorConfig.hpp EventBuilderConfig.hpp
 
-main.o : message.hpp DecompConfig.hpp FBBufferConfig.hpp
+main.o : message.hpp DecompConfig.hpp FWBufferConfig.hpp ConductorConfig.hpp EventBuilderConfig.hpp
