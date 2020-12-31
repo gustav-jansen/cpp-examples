@@ -1,0 +1,5 @@
+BUILD:
+INCLUDE='-I/home/grj/work/code/github.com/prometheus-cpp/_build/deploy/usr/local/include -L/home/grj/work/code/github.com/prometheus-cpp/_build/deploy/usr/local/lib' make
+
+RUN:
+LD_LIBRARY_PATH=/home/grj/work/code/github.com/prometheus-cpp/_build/deploy/usr/local/lib  ./prometheus_example.x
