@@ -14,7 +14,7 @@ Family<Counter>& build_counter_family(std::shared_ptr<Registry> registry) {
   auto& counter_family = BuildCounter()
                              .Name("time_running_seconds_total")
                              .Help("How many seconds is this server running?")
-                             .Labels({{"label", "value"}})
+//                             .Labels({{"label", "value"}})
                              .Register(*registry);
 
   return counter_family;
